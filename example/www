@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+var bancha = require('../index');
+
+bancha().start();
