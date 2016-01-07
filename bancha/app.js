@@ -58,7 +58,7 @@ function App(options) {
   });
 
   // view engine setup
-  app.set('views', path.join(__dirname, 'views', options.viewsPath));
+  app.set('views', [path.join(__dirname, 'views'), options.viewsPath]);
   app.set('view engine', 'jade');
   app.locals.build = Math.round(Date.now()/1000);
   app.locals.moment = moment;
@@ -123,6 +123,7 @@ function App(options) {
   // will print stacktrace
   if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
+      console.error(err);
       res.status(err.status || 500);
       res.render('error', {
         message: err.message,

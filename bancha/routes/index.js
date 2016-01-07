@@ -24,16 +24,7 @@ module.exports = function Router (app) {
   // -------------------------------------------------------
 
   router.get('/', function (req, res) {
-    async.parallel([
-      function (next) {
-        req.skip_schema = true;
-        schema.get('work').collection.get(req).limit(20).toArray(next);
-      }
-    ], function (err, results) {
-      res.render('home', {
-        records: results[0]
-      });
-    });
+    res.render('index');
   });
 
   // -------------------------------------------------------
